@@ -1,0 +1,377 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence of Christ Resurrection Ministry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-navy: #0B132B;
+            --royal-blue: #1C2541;
+            --light-bg: #F8F9FA;
+            --text-dark: #222222;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+        }
+        /* Navigation Header with Logo */
+        header {
+            background-color: var(--deep-navy);
+            padding: 0.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%; /* Makes the logo circular; remove if rectangular logo preferred */
+            border: 2px solid var(--primary-gold);
+        }
+        .logo-text {
+            color: var(--primary-gold);
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Cinzel', serif;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary-gold);
+        }
+        /* Hero Section with Background Photo Slider */
+        .hero {
+            position: relative;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            overflow: hidden;
+            background-color: var(--deep-navy);
+        }
+        /* Hero Background Slider Images */
+        .hero-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+        .hero-bg-slide.active {
+            opacity: 1;
+        }
+        /* Dark overlay to make text and video stand out clearly over sliding images */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 19, 43, 0.75);
+            z-index: 2;
+        }
+        /* Hero Content Container */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        /* Local Video Player Container */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 3px solid var(--primary-gold);
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .section-padding {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        /* Scripture Slider */
+        .slider-container {
+            background-color: var(--royal-blue);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 3px solid var(--primary-gold);
+            border-bottom: 3px solid var(--primary-gold);
+            min-height: 120px;
+        }
+        .verse-slide {
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .verse-slide.active {
+            display: block;
+        }
+        .verse-slide blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .verse-slide cite {
+            display: block;
+            margin-top: 15px;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        /* WhatsApp Section */
+        .whatsapp-section {
+            background-color: #e8f5e9;
+            border-radius: 15px;
+            padding: 40px 20px;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 700px;
+            border: 2px solid #25D366;
+        }
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        /* Feature Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--primary-gold);
+        }
+        /* Prayer Request Form */
+        .prayer-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .prayer-section input, .prayer-section textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .submit-btn {
+            background-color: var(--deep-navy);
+            color: var(--primary-gold);
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: var(--royal-blue);
+        }
+        footer {
+            background-color: var(--deep-navy);
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Ministry Logo" class="logo-img">
+            <span class="logo-text">Evidence of Christ's Resurrection</span>
+        </div>
+         <nav>
+            <a href="index.html">Home</a>
+            <a href="about us.html">About Us</a>
+            <a href="community.html">Community</a>
+            <a href="bible.html">Holy Bible</a>
+            <a href="Bible games.html" style="color: var(--primary-gold);">Games</a>
+            <a href="news.html">News</a>
+            <a href="follow Us.html">Follow Us</a>
+<a href="Bible Ai.html">Bible Ai</a>
+</nav>
+    </header>
+    <section class="hero" id="welcome">
+       
+        <div class="hero-bg-slide active" style="background-image: url('Pic.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('Pic2.jpg');"></div>
+        <div class="hero-bg-slide" style="background-image: url('Pic3.jpg');"></div>
+       
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Our Online Sanctuary</h1>
+            <p>Experiencing the transformational power and undeniable truth of the resurrected Lord Jesus Christ.</p>
+           
+            <div class="video-container">
+                <video controls poster="logo.png">
+                    <source src="video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+    <div class="slider-container">
+        <div class="verse-slide active">
+            <blockquote>"Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live."</blockquote>
+            <cite>— John 11:25</cite>
+        </div>
+        <div class="verse-slide">
+            <blockquote>"And if the Spirit of him who raised Jesus from the dead is living in you, he who raised Christ from the dead will also give life to your mortal bodies."</blockquote>
+            <cite>— Romans 8:11</cite>
+        </div>
+        <div class="verse-slide">
+            <blockquote>"Praise be to the God and Father of our Lord Jesus Christ! In his great mercy he has given us new birth into a living hope through the resurrection of Jesus Christ."</blockquote>
+            <cite>— 1 Peter 1:3</cite>
+        </div>
+    </div>
+    <div class="section-padding">
+        <section id="devotional" style="margin-bottom: 50px;">
+            <h2>Daily Word & Reflection</h2>
+            <div class="card" style="max-width: 800px; margin: 0 auto; text-align: left;">
+                <h3 style="color: var(--royal-blue); margin-top: 0;">Walking in Resurrection Power</h3>
+                <p><strong>Today's Focus:</strong> The resurrection of Jesus Christ is not just a historical event—it is a present reality in the life of every believer. Today, expect God's restoring power to bring life to every dead situation in your life.</p>
+            </div>
+        </section>
+        <section class="whatsapp-section" id="whatsapp">
+            <h2 style="color: #128C7E; margin-top: 0;">Join Our WhatsApp Fellowship</h2>
+            <p>Stay connected daily with devotionals, live meeting links, prayer updates, and community support directly on your phone.</p>
+            <a href="https://chat.whatsapp.com/Bq9DZtrTPzk8z5SqWtppsQ?s=cl&p=a&ilr=1" target="_blank" class="whatsapp-btn">
+                📲 Join WhatsApp Group
+            </a>
+        </section>
+        <section style="margin-top: 60px;">
+            <h2>Our Core Pillars</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>The Resurrected Truth</h3>
+                    <p>Uncompromising teaching grounded in the Word of God, revealing the living evidence of Christ today.</p>
+                </div>
+                <div class="card">
+                    <h3>Global Fellowship</h3>
+                    <p>Connecting believers across nations to worship together and build up one another in love.</p>
+                </div>
+                <div class="card">
+                    <h3>Prayer & Deliverance</h3>
+                    <p>Standing in faith for miraculous transformations, healing, and freedom through Jesus Christ.</p>
+                </div>
+            </div>
+        </section>
+        <section id="prayer" style="margin-top: 80px;">
+            <h2>Send Us Your Prayer Requests</h2>
+            <p>We believe in the power of agreement. Let us stand with you in faith.</p>
+            <div class="prayer-section">
+                <form action="https://formsubmit.co/ecrloveschrist@gmail.com" method="POST">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <textarea name="message" rows="5" placeholder="Share your prayer needs here..." required></textarea>
+                    <button type="submit" class="submit-btn">SEND PRAYER REQUEST</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2026 Evidence of Christ Resurrection Ministry. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Hero Background Photo Slider Script
+        let currentBgIndex = 0;
+        const bgSlides = document.querySelectorAll('.hero-bg-slide');
+        function rotateBackgrounds() {
+            bgSlides[currentBgIndex].classList.remove('active');
+            currentBgIndex = (currentBgIndex + 1) % bgSlides.length;
+            bgSlides[currentBgIndex].classList.add('active');
+        }
+        // Change background image every 5 seconds
+        setInterval(rotateBackgrounds, 5000);
+        // Verse Slider Script
+        let currentVerseIndex = 0;
+        const verseSlides = document.querySelectorAll('.verse-slide');
+        function rotateVerses() {
+            verseSlides[currentVerseIndex].classList.remove('active');
+            currentVerseIndex = (currentVerseIndex + 1) % verseSlides.length;
+            verseSlides[currentVerseIndex].classList.add('active');
+        }
+        // Change verse every 6 seconds
+        setInterval(rotateVerses, 6000);
+    </script>
+</body>
+</html>
