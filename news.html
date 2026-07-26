@@ -234,6 +234,41 @@
             });
         }
     </script>
-   
+   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  async function loadNews() {
+    const container = document.getElementById('news-container');
+    try {
+      // Fetches the list of files saved in your news folder via GitHub API
+      const response = await fetch('https://api.github.com/repos/gbeadahatkins-sudo/ECR-website/contents/content/news');
+      const files = await response.json();
+     
+      if (!Array.isArray(files) || files.length === 0) {
+        container.innerHTML = '<p>No news updates yet.</p>';
+        return;
+      }
+      container.innerHTML = ''; // Clear loading message
+      // Loop through each news post file
+      for (const file of files) {
+        if (file.name.endsWith('.md')) {
+          const res = await fetch(file.download_url);
+          const text = await res.text();
+         
+          // Separate frontmatter header from content
+          const content = text.replace(/^---[\s\S]*?---/, '');
+         
+          const newsCard = document.createElement('article');
+          newsCard.style.cssText = 'margin-bottom: 20px; padding: 15px; border-bottom: 1px solid #ccc;';
+          newsCard.innerHTML = marked.parse(content);
+          container.appendChild(newsCard);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      container.innerHTML = '<p>Unable to load news updates right now.</p>';
+    }
+  }
+  loadNews();
+</script>
 </body>
 </html>
