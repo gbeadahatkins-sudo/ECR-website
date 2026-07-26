@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Activities - Evidence of Christ Resurrection Ministry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --deep-navy: #0B132B;
+            --royal-blue: #1C2541;
+            --light-bg: #F8F9FA;
+            --text-dark: #222222;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+        h1, h2, h3 { font-family: 'Cinzel', serif; }
+        /* Navigation Header */
+        header {
+            background-color: var(--deep-navy);
+            padding: 0.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { height: 50px; width: auto; border-radius: 50%; border: 2px solid var(--primary-gold); }
+        .logo-text { color: var(--primary-gold); font-size: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        nav a { color: #ffffff; text-decoration: none; margin-left: 20px; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--primary-gold); }
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(rgba(11, 19, 43, 0.85), rgba(11, 19, 43, 0.85)), url('Pic.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 3px solid var(--primary-gold);
+        }
+        .page-banner h1 { font-size: 2.5rem; color: var(--primary-gold); margin: 0; }
+        .page-banner p { font-size: 1.1rem; margin-top: 10px; color: #ddd; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+        /* Newsletter Subscription Box */
+        .newsletter-card {
+            background: var(--royal-blue);
+            color: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--primary-gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+        .newsletter-card h2 { color: var(--primary-gold); margin-top: 0; }
+        .subscribe-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 550px;
+            margin: 20px auto 0 auto;
+        }
+        .subscribe-form input {
+            flex: 1 1 200px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .subscribe-btn {
+            background-color: var(--primary-gold);
+            color: var(--deep-navy);
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        /* Interactive Controls: Search & Category Filter */
+        .controls-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .search-input {
+            flex: 1 1 250px;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-btn {
+            background: #f0f3f8;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--royal-blue);
+            color: var(--primary-gold);
+            border-color: var(--royal-blue);
+        }
+        /* Empty Feed Box */
+        .feed-container {
+            min-height: 200px;
+        }
+        .empty-message {
+            text-align: center;
+            padding: 50px 20px;
+            background: white;
+            border-radius: 12px;
+            color: #777;
+            border: 2px dashed #ddd;
+        }
+        /* Card Template Style (for when you add posts) */
+        .post-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-gold);
+        }
+        .post-tag {
+            background: var(--royal-blue);
+            color: var(--primary-gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        footer { background-color: var(--deep-navy); color: #888; text-align: center; padding: 20px; margin-top: 60px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Ministry Logo" class="logo-img">
+            <span class="logo-text">Evidence of Christ Resurrection</span>
+        </div>
+        <nav>
+             <a href="index.html">Home</a>
+            <a href="about us.html">About Us</a>
+            <a href="community.html">Community</a>
+            <a href="bible.html">Bible</a>
+            <a href="Bible games.html" style="color: var(--primary-gold);">Games</a>
+            <a href="news.html">News</a>
+            <a href="follow Us.html">Follow</a>
+<a href="Bible Ai.html">Bible Ai</a>
+        </nav>
+    </header>
+    <section class="page-banner">
+        <h1>News & Ministry Activities</h1>
+        <p>Stay informed with the latest updates and upcoming events.</p>
+    </section>
+    <div class="container">
+        <div class="newsletter-card">
+            <h2>📩 Subscribe to Email Updates</h2>
+            <p>Receive notifications for upcoming activities and ministry news directly in your email inbox!</p>
+            <form action="https://formsubmit.co/ecrloveschrist@gmail.com" method="POST" class="subscribe-form">
+                <input type="hidden" name="_subject" value="New Ministry Email Subscriber!">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <button type="submit" class="subscribe-btn">SUBSCRIBE</button>
+            </form>
+        </div>
+        <div class="controls-bar">
+            <input type="text" id="search-box" class="search-input" placeholder="Search news or activities..." onkeyup="filterPosts()">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
+                <button class="filter-btn" onclick="filterCategory('activity', this)">Activities</button>
+                <button class="filter-btn" onclick="filterCategory('news', this)">News</button>
+                <button class="filter-btn" onclick="filterCategory('announcement', this)">Announcements</button>
+            </div>
+        </div>
+        <div id="feed-container" class="feed-container">
+            <div class="empty-message">
+                <h3>No updates posted yet</h3>
+                <p>New activities and announcements will appear here soon.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 Evidence of Christ Resurrection Ministry. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function filterCategory(category, element) {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            element.classList.add('active');
+            const posts = document.querySelectorAll('.post-card');
+            posts.forEach(post => {
+                if (category === 'all' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+        function filterPosts() {
+            const query = document.getElementById('search-box').value.toLowerCase();
+            const posts = document.querySelectorAll('.post-card');
+            posts.forEach(post => {
+                const text = post.innerText.toLowerCase();
+                post.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
